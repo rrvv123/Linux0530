@@ -1,0 +1,36 @@
+Ubuntu 22.04.2 LTS
+polystudent-virtual-machine login: teluser
+Password:
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-35-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+teluser@polystudent-virtual-machine:~$ ls
+snap
+teluser@polystudent-virtual-machine:~$ sudo -su root
+[sudo] teluser ?뷀샇:
+teluser?(?? sudoers ?ㅼ젙 ?뚯씪???놁뒿?덈떎.  ???쒕룄瑜?蹂닿퀬?⑸땲??
+teluser@polystudent-virtual-machine:~$
