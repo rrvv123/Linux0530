@@ -1,0 +1,118 @@
+root@polystudent-virtual-machine:~/바탕화면# cd
+root@polystudent-virtual-machine:~# dpkg -l telnetd
+dpkg-query: telnetd와 일치하는 패키지를 찾지 못했습니다
+root@polystudent-virtual-machine:~# apt-get -y install xinetd telnetd
+패키지 목록을 읽는 중입니다... 완료
+의존성 트리를 만드는 중입니다... 완료
+상태 정보를 읽는 중입니다... 완료        
+다음 새 패키지를 설치할 것입니다:
+  telnetd xinetd
+0개 업그레이드, 2개 새로 설치, 0개 제거 및 0개 업그레이드 안 함.
+147 k바이트 아카이브를 받아야 합니다.
+이 작업 후 420 k바이트의 디스크 공간을 더 사용하게 됩니다.
+받기:1 http://mirror.kakao.com/ubuntu bionic/universe amd64 xinetd amd64 1:2.3.15.3-1 [108 kB]
+받기:2 http://mirror.kakao.com/ubuntu bionic/universe amd64 telnetd amd64 0.17-41 [39.3 kB]
+내려받기 147 k바이트, 소요시간 0초 (772 k바이트/초)
+Selecting previously unselected package xinetd.
+(데이터베이스 읽는중 ...현재 205520개의 파일과 디렉터리가 설치되어 있습니다.)
+Preparing to unpack .../xinetd_1%3a2.3.15.3-1_amd64.deb ...
+Unpacking xinetd (1:2.3.15.3-1) ...
+Selecting previously unselected package telnetd.
+Preparing to unpack .../telnetd_0.17-41_amd64.deb ...
+Unpacking telnetd (0.17-41) ...
+xinetd (1:2.3.15.3-1) 설정하는 중입니다 ...
+telnetd (0.17-41) 설정하는 중입니다 ...
+사용자 telnetd을(를) utmp 그룹에 등록 중
+Note: xinetd currently is not fully supported by update-inetd.
+Please consult /usr/share/doc/xinetd/README.Debian and itox(8).
+update-inetd: warning: cannot add service, /etc/inetd.conf does not exist
+Processing triggers for man-db (2.10.2-1) ...
+root@polystudent-virtual-machine:~# dpkg -l telnetd
+희망상태=알수없음(U)/설치(I)/지우기(R)/깨끗이(P)/고정(H)
+| 상태=아님(N)/설치(I)/설정(C)/풀림(U)/절반설정(F)/일부설치(H)/트리거대기(W)/
+| /    트리거밀림(T)
+|/ 오류?=(없음)/다시설치필요(R) (상태, 오류가 대문자=불량)
+||/ 이름           버전         Architecture 설명
++++-==============-============-============-=================================
+ii  telnetd        0.17-41      amd64        basic telnet server
+root@polystudent-virtual-machine:~# cd /etc/xinetd.d
+root@polystudent-virtual-machine:/etc/xinetd.d# nano telnet
+root@polystudent-virtual-machine:/etc/xinetd.d# cd
+root@polystudent-virtual-machine:~# adduser teluser
+'teluser' 사용자를 추가 중...
+새 그룹 'teluser' (1004) 추가 ...
+새 사용자 'teluser' (1006) 을(를) 그룹 'teluser' (으)로 추가 ...
+'/home/teluser' 홈 디렉터리를 생성하는 중...
+'/etc/skel'에서 파일들을 복사하는 중...
+새 암호: 
+잘못된 비밀번호: 암호는 8 개의 문자 보다 짧습니다
+새 암호 재입력: 
+passwd: 암호를 성공적으로 업데이트했습니다
+teluser의 사용자의 정보를 바꿉니다
+새로운 값을 넣거나, 기본값을 원하시면 엔터를 치세요
+	이름 []: 
+	방 번호 []: 
+	직장 전화번호 []: 
+	집 전화번호 []: 
+	기타 []: 
+정보가 올바릅니까? [Y/n] y
+root@polystudent-virtual-machine:~# systemctl restart xinetd
+root@polystudent-virtual-machine:~# systemctl enable xinetd
+xinetd.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable xinetd
+root@polystudent-virtual-machine:~# systemctl status xinetd
+● xinetd.service - LSB: Starts or stops the xinetd daemon.
+     Loaded: loaded (/etc/init.d/xinetd; generated)
+     Active: active (running) since Tue 2023-05-30 09:39:51 KST; 1min 25s ago
+       Docs: man:systemd-sysv-generator(8)
+      Tasks: 1 (limit: 4573)
+     Memory: 488.0K
+        CPU: 83ms
+     CGroup: /system.slice/xinetd.service
+             └─2405 /usr/sbin/xinetd -pidfile /run/xinetd.pid -stayalive -inetd>
+
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: missing service keyw>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Reading included con>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: 2.3.15.3 started wit>
+ 5월 30 09:39:51 polystudent-virtual-machine xinetd[2405]: Started working: 0 a>
+root@polystudent-virtual-machine:~# ufw allow 23/tcp
+규칙이 추가되었습니다
+규칙이 추가되었습니다 (v6)
+root@polystudent-virtual-machine:~# cd /etc/xinetd.d
+root@polystudent-virtual-machine:/etc/xinetd.d# nano telnet
+root@polystudent-virtual-machine:/etc/xinetd.d# cd
+root@polystudent-virtual-machine:~# systemctl restart xinetd
+root@polystudent-virtual-machine:~# systemctl enable xinetd
+xinetd.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable xinetd
+root@polystudent-virtual-machine:~# systemctl status xinetd
+● xinetd.service - LSB: Starts or stops the xinetd daemon.
+     Loaded: loaded (/etc/init.d/xinetd; generated)
+     Active: active (running) since Tue 2023-05-30 10:00:56 KST; 7s ago
+       Docs: man:systemd-sysv-generator(8)
+      Tasks: 1 (limit: 4573)
+     Memory: 488.0K
+        CPU: 74ms
+     CGroup: /system.slice/xinetd.service
+             └─3024 /usr/sbin/xinetd -pidfile /run/xinetd.pid -stayalive -inetd_compat -inetd_ipv6
+
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/discard-udp [file=/etc/xinetd.d/discard->
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/echo [file=/etc/xinetd.d/echo] [line=14]
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/echo-udp [file=/etc/xinetd.d/echo-udp] [>
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/servers [file=/etc/xinetd.d/servers] [li>
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/services [file=/etc/xinetd.d/services] [>
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/telnet [file=/etc/xinetd.d/telnet] [line>
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/time [file=/etc/xinetd.d/time] [line=10]
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Reading included configuration file: /etc/xinetd.d/time-udp [file=/etc/xinetd.d/time-udp] [>
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: 2.3.15.3 started with libwrap loadavg labeled-networking options compiled in.
+ 5월 30 10:00:56 polystudent-virtual-machine xinetd[3024]: Started working: 1 available service
+root@polystudent-virtual-machine:~# ufw allow 23/tcp
+존재하는 규칙을 추가하는 걸 건너뜁니다
+존재하는 규칙을 추가하는 걸 건너뜁니다 (v6)
+root@polystudent-virtual-machine:~# 
