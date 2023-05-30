@@ -1,0 +1,55 @@
+root@polystudent-virtual-machine:~# ifconfig
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.91.128  netmask 255.255.255.0  broadcast 192.168.91.255
+        inet6 fe80::2367:5f87:3446:6b52  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:97:10:07  txqueuelen 1000  (Ethernet)
+        RX packets 1394  bytes 1254261 (1.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 429  bytes 55932 (55.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 152  bytes 13913 (13.9 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 152  bytes 13913 (13.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@polystudent-virtual-machine:~# telnet 192.168.116.130 23
+Trying 192.168.116.130...
+telnet: Unable to connect to remote host: Connection refused
+root@polystudent-virtual-machine:~# telnet 192.168.91.128
+Trying 192.168.91.128...
+Connected to 192.168.91.128.
+Escape character is '^]'.
+Ubuntu 22.04.2 LTS
+polystudent-virtual-machine login: teluser
+Password: 
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-35-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+Last login: Tue May 30 10:13:56 KST 2023 from 192.168.91.1 on pts/1
+teluser@polystudent-virtual-machine:~$ whoami
+teluser
+teluser@polystudent-virtual-machine:~$ exit
+로그아웃
+Connection closed by foreign host.
+root@polystudent-virtual-machine:~#
